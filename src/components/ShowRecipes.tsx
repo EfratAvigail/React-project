@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Recipise } from "../Types";
-import mobxRec from "./mobxRec"; // ייבוא החנות שלך
+import mobxRec from "./mobxRec"; 
 import { observer } from 'mobx-react-lite';
 import axios from "axios";
 import {
@@ -45,7 +45,7 @@ const ShowRecipes = observer(() => {
   }, []);
 
   const handleImageError = (src: string) => {
-    console.error(`שגיאה בטעינת התמונה: ${src}`);
+     console.error(`תמונה בפורמט שגוי: ${src}`);
     mobxRec.setCurrImage({
       ...mobxRec.currImage,
       [src]: "/images/default.jpg",
@@ -61,7 +61,7 @@ const ShowRecipes = observer(() => {
     } else {
       setMsg(" אינך מורשה לערוך את המתכון מכיוון שאינך מחובר");
     }
-    setShow(1);
+    setShow(0);
   };
 
   const handleDeleteRecipe = async (id: number, userId: number) => {
@@ -84,9 +84,9 @@ const ShowRecipes = observer(() => {
       {msg && <div style={{ color: "red", fontSize: "18px", padding: "10px" }}>{msg}</div>}
       {show === 0 && (
         <>
-          {/* הוספת שדות הסינון */}
+          {}
           <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
-            {/* קטגוריה */}
+            {}
             <TextField
               style={{ borderBottom: "2px solid yellow" }}
               label="קטגוריה"
@@ -103,7 +103,7 @@ const ShowRecipes = observer(() => {
               <MenuItem value={3}>שונות</MenuItem>
            
             </TextField>
-            {/* קושי */}
+            {}
             <TextField
               style={{ borderBottom: "4px solid yellow" }}
               label="קושי"
@@ -148,7 +148,6 @@ const ShowRecipes = observer(() => {
 
             <ImageList sx={{ width: 800, height: 600 }} cols={3} gap={20}>
               <ImageListItem key="Subheader" cols={3}>
-                <ListSubheader component="div">📖 מתכונים</ListSubheader>
               </ImageListItem>
 
               {recipises &&
@@ -230,7 +229,7 @@ const ShowRecipes = observer(() => {
         </>
       )}
     </>
-  );
-});
+  ); // ודא שיש כאן נקודת פסיק
+}); // הוסף כאן נקודת פסיק אם חסרה
 
 export default ShowRecipes;

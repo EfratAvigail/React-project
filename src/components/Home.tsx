@@ -26,7 +26,8 @@ const Home = () => {
     <>
       <div className="home-container">
         <div className="home-button">
-          {Myuser !== undefined && <button onClick={() => nav("/addrecipe")}> הוספת מתכון</button>}
+          {/* {Myuser !== undefined && <button onClick={() => nav("/AddRecipe")}> הוספת מתכון</button>} */}
+          <button onClick={() => { console.log("Button clicked"); nav("/AddRecipe"); }}> הוספת מתכון</button>
 
           <button onClick={() => { setNavigate(1); nav("/Login") }}>אני כבר מחובר</button>
           <button onClick={() => { setNavigate(1); nav("/SighIn") }}>גם אני מצטרף</button>

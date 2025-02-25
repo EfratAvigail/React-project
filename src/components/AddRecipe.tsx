@@ -15,14 +15,14 @@ const validationSchema = yup.object({
   Difficulty: yup.string().required("דרגת קושי חובה"),
   Duration: yup.string().required("משך זמן חובה"),
   Description: yup.string().required("תיאור חובה"),
-  CategoryId: yup.number().required("קטגוריה חובה"),
+  CategoryId: yup.number().oneOf([1, 2, 3, 4], "קטגוריה חובה").required("קטגוריה חובה"),
   Img: yup.string().notRequired(),
   Instructions: yup.array().of(
     yup.object({
       Name: yup.string().required("הוראה חובה"),
     })
   ),
-  Ingridents: yup.array().of(
+  Ingredients: yup.array().of(
     yup.object({
       Name: yup.string().required("שם רכיב חובה"),
       Count: yup.string().required("כמות רכיב חובה"),
@@ -34,6 +34,7 @@ const validationSchema = yup.object({
 const AddRecipe = () => {
   const { Myuser } = useContext(userContext); 
   const nav = useNavigate();
+
   const {
     control,
     handleSubmit,
@@ -45,16 +46,22 @@ const AddRecipe = () => {
       Difficulty: "",
       Duration: "",
       Description: "",
-      CategoryId:0,
+      CategoryId: 1,
       Img: "",
       Instructions: [{ Name: "" }],
-      Ingridents: [{ Name: "", Count: "", Type: "" }],
+      Ingredients: [{ Name: "", Count: "", Type: "" }],
     },
   });
 
-  const onSubmit = async (data: any) => {
-    const updatedData = { ...data, UserId: Myuser?.Id }; // הוספת ה-ID לנתונים
+  const onSubmit = async (data) => {
+    if (!Myuser) {
+      console.error("User is not defined");
+      return;
+    }
+
+    const updatedData = { ...data, UserId: Myuser.Id };
     console.log("Form submitted:", updatedData);
+    
     try {
       const res = await axios.post(`http://localhost:8080/api/recipe`, updatedData, {
         headers: { "Content-Type": "application/json" },
@@ -62,7 +69,7 @@ const AddRecipe = () => {
       console.log(res.data);
       nav("./ShowRecipie");
     } catch (error) {
-      console.error("שגיאה בהוספת מתכון", error);
+      console.error("שגיאה בהוספת מתכון", error.response ? error.response.data : error.message);
     }
   };
 
@@ -74,7 +81,7 @@ const AddRecipe = () => {
             הוסף מתכון
           </Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
-            {/* שם */}
+            {/* שדות הקלט */}
             <Controller
               name="Name"
               control={control}
@@ -90,8 +97,6 @@ const AddRecipe = () => {
                 />
               )}
             />
-
-            {/* דרגת קושי */}
             <Controller
               name="Difficulty"
               control={control}
@@ -112,8 +117,6 @@ const AddRecipe = () => {
                 </TextField>
               )}
             />
-
-            {/* זמן */}
             <Controller
               name="Duration"
               control={control}
@@ -129,8 +132,6 @@ const AddRecipe = () => {
                 />
               )}
             />
-
-            {/* תיאור */}
             <Controller
               name="Description"
               control={control}
@@ -146,8 +147,6 @@ const AddRecipe = () => {
                 />
               )}
             />
-
-            {/* קטגוריה */}
             <Controller
               name="CategoryId"
               control={control}
@@ -162,17 +161,13 @@ const AddRecipe = () => {
                   helperText={errors.CategoryId?.message}
                   sx={{ mb: 1 }}
                 >
-                  <MenuItem value={1}>ארועים</MenuItem>
-                  <MenuItem value={2}>ביתי</MenuItem>
-                  <MenuItem value={3}>דיאטטי</MenuItem>
-                  <MenuItem value={4}>זול</MenuItem>
-                  <MenuItem value={5}>בר</MenuItem>
-                  <MenuItem value={6}>מבושל</MenuItem>
+                  <MenuItem value={1}>קנוחים</MenuItem>
+                  <MenuItem value={2}>תבשילים</MenuItem>
+                  <MenuItem value={3}>מרקים</MenuItem>
+                  <MenuItem value={4}>משקאות חמים</MenuItem>
                 </TextField>
               )}
             />
-
-            {/* URL תמונה */}
             <Controller
               name="Img"
               control={control}
@@ -188,11 +183,8 @@ const AddRecipe = () => {
                 />
               )}
             />
-
-            {/* הוראות */}
-            <Typography variant="h6" gutterBottom>
-              הוראות
-            </Typography>
+            {/* הוראות ורכיבים */}
+            <Typography variant="h6" gutterBottom>הוראות</Typography>
             <Controller
               name="Instructions"
               control={control}
@@ -227,13 +219,9 @@ const AddRecipe = () => {
                 </div>
               )}
             />
-
-            {/* רכיבים */}
-            <Typography variant="h6" gutterBottom>
-              רכיבים
-            </Typography>
+            <Typography variant="h6" gutterBottom>רכיבים</Typography>
             <Controller
-              name="Ingridents"
+              name="Ingredients"
               control={control}
               render={({ field }) => (
                 <div>
@@ -243,9 +231,9 @@ const AddRecipe = () => {
                         label="שם רכיב"
                         value={ingredient.Name}
                         onChange={(e) => {
-                          const newIngridents = [...(field.value || [])];
-                          newIngridents[index] = { ...newIngridents[index], Name: e.target.value };
-                          field.onChange(newIngridents);
+                          const newIngredients = [...(field.value || [])];
+                          newIngredients[index] = { ...newIngredients[index], Name: e.target.value };
+                          field.onChange(newIngredients);
                         }}
                         fullWidth
                       />
@@ -253,9 +241,9 @@ const AddRecipe = () => {
                         label="כמות"
                         value={ingredient.Count}
                         onChange={(e) => {
-                          const newIngridents = [...(field.value || [])];
-                          newIngridents[index] = { ...newIngridents[index], Count: e.target.value };
-                          field.onChange(newIngridents);
+                          const newIngredients = [...(field.value || [])];
+                          newIngredients[index] = { ...newIngredients[index], Count: e.target.value };
+                          field.onChange(newIngredients);
                         }}
                         fullWidth
                       />
@@ -263,17 +251,17 @@ const AddRecipe = () => {
                         label="סוג"
                         value={ingredient.Type}
                         onChange={(e) => {
-                          const newIngridents = [...(field.value || [])];
-                          newIngridents[index] = { ...newIngridents[index], Type: e.target.value };
-                          field.onChange(newIngridents);
+                          const newIngredients = [...(field.value || [])];
+                          newIngredients[index] = { ...newIngredients[index], Type: e.target.value };
+                          field.onChange(newIngredients);
                         }}
                         fullWidth
                       />
                       <IconButton
                         color="secondary"
                         onClick={() => {
-                          const newIngridents = (field.value || []).filter((_, i) => i !== index);
-                          field.onChange(newIngridents);
+                          const newIngredients = (field.value || []).filter((_, i) => i !== index);
+                          field.onChange(newIngredients);
                         }}
                       >
                         <RemoveCircleIcon />
@@ -286,7 +274,6 @@ const AddRecipe = () => {
                 </div>
               )}
             />
-
             <Button type="submit" variant="contained" size="small" fullWidth>
               שלח
             </Button>
