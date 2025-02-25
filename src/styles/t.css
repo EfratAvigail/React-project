@@ -1,0 +1,25 @@
+/* CSS for styling the Recipe Form */
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .MuiCard-root {
+    border-radius: 12px;
+  }
+  
+  .MuiTextField-root {
+    margin-bottom: 16px;
+  }
+  
+  .MuiButton-root {
+    margin-top: 16px;
+  }
+  
+  .MuiIconButton-root {
+    margin-top: 10px;
+  }
+  
+  .MuiBox-root {
+    padding: 16px;
+  }
+  

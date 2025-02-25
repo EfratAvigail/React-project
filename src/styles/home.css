@@ -1,0 +1,92 @@
+body {
+  background-image: url('../../public/images/homeb.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw; /* הוספת רוחב של 100% */
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif; /* שינוי גופן */
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* גובה מתואם */
+  text-align: center;
+  color: #ffffff; /* צבע טקסט לבן */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7); /* צל לטקסט */
+}
+
+.home-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.center-button {
+  margin-top: 20px;
+  padding: 15px 30px; /* הגדלת שטח הכפתור */
+  font-size: 28px; /* גודל טקסט גדול יותר */
+  background-color: rgba(255, 215, 0, 0.9); /* צבע רקע יוקרתי */
+  color: #ffffff; /* צבע טקסט לבן */
+  border: none;
+  border-radius: 30px; /* קצוות מעוגלים יותר */
+  cursor: pointer;
+  position: relative;
+  outline: none; /* ביטול המסגרת בעת לחיצה */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* אנימציה על שינוי צבע */
+}
+
+.center-button:hover {
+  background-color: rgba(255, 215, 0, 1); /* שינוי צבע ברוורס */
+  transform: scale(1.05); /* הגדלה קלה בעת ריחוף */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* צל בעת ריחוף */
+}
+
+.center-button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 40%; /* קו באורך 40% מהכפתור */
+  height: 3px; /* גובה הקו */
+  background-color: #ffffff; /* צבע הקו */
+  transform: translateX(-50%); /* ממקם את הקו במרכז */
+}
+
+button {
+  padding: 12px 25px; /* הגדלת שטח הכפתור */
+  font-size: 18px; /* גודל טקסט גדול יותר */
+  cursor: pointer;
+  outline: none; /* ביטול המסגרת בעת לחיצה */
+  background-color: rgba(255, 255, 255, 0.3); /* רקע שקוף */
+  color: #ffb300;
+  border: 2px solid transparent; /* גבול שקוף */
+  border-radius: 30px; /* קצוות מעוגלים יותר */
+  transition: color 0.3s, border-color 0.3s, background-color 0.3s; /* אנימציה על שינוי צבע */
+}
+
+.home-button button:hover {
+  color: #ffffff;
+  border: 2px solid #ffb300; /* גבול צהוב בעת ריחוף */
+  background-color: rgba(255, 215, 0, 0.5); /* צבע רקע בעת ריחוף */
+}
+
+button:hover {
+  color: #ffffff;
+}
+
+button:focus {
+  outline: none; /* גם במצב פוקנציה */
+}
+#icon-container {
+  position: absolute; /* מאפשר מיקום חופשי */
+  top: 11px; /* מרחק מהחלק העליון */
+  right: 2px; /* מרחק מהצד הימני */
+}

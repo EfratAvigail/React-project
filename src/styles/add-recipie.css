@@ -1,0 +1,134 @@
+.amen {
+  width: 20px;
+  flex-direction: row; /* פריסה אנכית בתוך הכרטיס */
+}
+
+/* עיצוב הכרטיס */
+.MuiCard-root {
+  background-color: #ffffff; /* צבע רקע לבן */
+  border-radius: 12px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  width: 50%; /* כרטיס רחב יותר */
+  max-width: 400px; /* מקסימום רוחב */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* שיניתי ל-column */
+  gap: 20px;
+}
+
+/* כותרת הכרטיס */
+.MuiTypography-h5 {
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+  margin: 20px 0; /* הוספת מרווחים סביב הכותרת */
+}
+
+/* לכל שדה טקסט */
+.MuiTextField-root {
+  margin-bottom: 8px;
+  padding: 4px;
+}
+
+/* כפתור שליחה */
+.MuiButton-contained {
+  background-color: #0025fa;
+  color: rgba(255, 255, 255, 0.7); /* צבע כפתור יותר ברור */
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 6px 0;
+  transition: background-color 0.3s, transform 0.2s; /* הוספת אפקט גובה */
+}
+
+.MuiButton-contained:hover {
+  background-color: #303f9f;
+  transform: scale(1.05); /* הגדלת הכפתור במעט */
+}
+
+/* כותרות קטגוריות (Instructions, Ingredients) */
+.MuiTypography-h6 {
+  font-size: 11px; /* גודל כותרת קטן מאוד */
+  color: #444;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+/* עיצוב כפתור הוספה והסרה */
+.MuiIconButton-root {
+  margin-left: 4px;
+  padding: 2px;
+}
+
+.MuiIconButton-root:hover {
+  background-color: rgba(63, 81, 181, 0.1);
+  border-radius: 50%;
+}
+
+/* אלמנטים בתור */
+.MuiBox-root {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* שדות input עם border צבעוני */
+.MuiOutlinedInput-root {
+  border-radius: 8px;
+}
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: #bdbdbd; /* צבע גבול רגיל */
+}
+
+.MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+  border-color: #f44336;
+}
+
+/* שגיאות בטפסים */
+.MuiFormHelperText-root {
+  color: #f44336;
+  font-size: 8px;
+  margin-top: 4px; /* הוספת מרווח מעל השגיאה */
+}
+
+/* שדה Select */
+.MuiSelect-root {
+  font-size: 16px; /* הגדלת גודל הפונט */
+}
+
+/* עיצוב כפתור הוספה/הסרה עבור רכיבים */
+.MuiIconButton-root {
+  color: #7e1c1c;
+}
+
+.MuiIconButton-root:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.MuiBox-root .MuiTextField-root {
+  flex: 1;
+}
+
+/* כותרת כל שדה */
+.MuiInputLabel-root {
+  font-size: 12px;
+  color: #55555500;
+}
+
+/* התאמת שדות לאורך */
+.MuiTextField-root {
+  width: 100%;
+}
+
+/* פריסת שדות בשורה */
+.MuiGrid-root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* רווחים בין השדות */
+}
+
+.MuiGrid-item {
+  flex: 1;
+  min-width: 180px; /* אורך מינימלי של כל שדה */
+}

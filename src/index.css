@@ -1,0 +1,74 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #ffcc00; /* צבע צהוב יוקרתי */
+  text-decoration: none; /* אין קו תחתון */
+  transition: color 0.3s;
+}
+a:hover {
+  color: #ffd700; /* גוון זהב בעת ריחוף */
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, #1a1a1a, #242424); /* גרדיאנט כהה */
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #ffcc00; /* צבע טקסט יוקרתי */
+  text-align: center; /* מיקום במרכז */
+  margin-bottom: 20px; /* רווח תחתון */
+}
+
+button {
+  border-radius: 12px; /* קצוות מעוגלים יותר */
+  border: 2px solid transparent; /* גבול שקוף */
+  padding: 0.8em 1.5em; /* ריפוד גדול יותר */
+  font-size: 1em;
+  font-weight: 600; /* משקל טקסט גבוה יותר */
+  font-family: inherit;
+  background-color: #333; /* צבע רקע כהה */
+  color: #ffffff; /* צבע טקסט לבן */
+  cursor: pointer;
+  transition: all 0.3s; /* אנימציה חלקה */
+}
+button:hover {
+  background-color: #646cff; /* צבע רקע בעת ריחוף */
+  border-color: #ffcc00; /* גבול צהוב בעת ריחוף */
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+    color: #000; /* צבע טקסט כהה */
+  }
+}

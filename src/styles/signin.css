@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.signin-container {
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column; /* סידור האלמנטים בעמודה */
+  align-items: center; /* מיקום האלמנטים במרכז */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 400px;
+}
+
+.signin-form h2 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.signin-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.signin-form p {
+  color: #ff4d4d;
+  font-size: 14px;
+}
+
+.signin-form button {
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  color: #000;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px; /* רווח נוסף מעל הכפתור */
+  transition: background 0.3s, transform 0.3s;
+  font-weight: bold;
+}
+
+.signin-form button:disabled {
+  background: #999;
+}
+
+.signin-form button:hover:not(:disabled) {
+  background: #333;
+  color: #ffcc00;
+  transform: scale(1.05);
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
